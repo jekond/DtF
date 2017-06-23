@@ -1,4 +1,3 @@
-#тест
 from random import *
 def prov(point,slogn,penalty):#кол-во кубиков и сложность. Сделать необязательный аргумент Штраф.
     success=0#набранные успехи

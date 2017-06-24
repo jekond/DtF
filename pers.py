@@ -106,7 +106,7 @@ class Characher:
 #
     def speach(self,hard):
         return prov(self.atribut['Social']['Charisma']
-                    + self.abilities['Talents']['Art'],hard,self.health[3])
+                    + self.abilities['Skills']['Acting'],hard,self.health[3])
 
 ###
 ###Боевые действия. В платформере
@@ -118,7 +118,8 @@ class Characher:
     def melee_attack(self):
         dmg=0
         if(self.enemy.health[3]=='!'):
-            a='+'*(self.atribut[self.weapon_use.owner[0]][self.weapon_use.owner[1]] + self.abilities[self.weapon_use.owner[2]][self.weapon_use.owner[3]])
+            a='+'*(self.atribut[self.weapon_use.owner[0]][self.weapon_use.owner[1]] +
+                   self.abilities[self.weapon_use.owner[2]][self.weapon_use.owner[3]])
         else:
             a=prov(self.atribut[self.weapon_use.owner[0]][self.weapon_use.owner[1]] +
                    self.abilities[self.weapon_use.owner[2]][self.weapon_use.owner[3]],6,self.health[3])

@@ -25,14 +25,24 @@ class Charsheet_button(Button):
         self.b_ab_id = ['Athletics','Brawl','Dodge','Intimidation','Cunning','Leadership',
                         'Firearms','Melee','Securiti','Stealth','Acting','Search',
                         'Computer','Finance','Investigation','Medicine','Politics','Religion']
+        self.exp = 30
     def add_point(self,abil_or_atrib,tp,ab_or_at,i):#pl_ch.abilities\atribut,b_at_type\b_ab_type,b_ab_id\b_at_id,номер в списке айдишников
         if(abil_or_atrib[tp][ab_or_at[i]]<5):
-            abil_or_atrib[tp][ab_or_at[i]]+=1
+            if(abil_or_atrib == pl_ch.atribut and (self.exp - abil_or_atrib[tp][ab_or_at[i]] * 4)>=0):
+                self.exp -= abil_or_atrib[tp][ab_or_at[i]] * 4
+                abil_or_atrib[tp][ab_or_at[i]]+=1
+            elif(abil_or_atrib[tp][ab_or_at[i]] == 0 and self.exp-3 >=0):
+                self.exp -= 3
+                abil_or_atrib[tp][ab_or_at[i]]+=1
+            elif(abil_or_atrib == pl_ch.abilities and (self.exp - abil_or_atrib[tp][ab_or_at[i]] * 3)>=0 and abil_or_atrib[tp][ab_or_at[i]] != 0):
+                self.exp -= abil_or_atrib[tp][ab_or_at[i]] * 3
+                abil_or_atrib[tp][ab_or_at[i]]+=1
+            else:
+                print('Недостаточно очков опыта')
+            print(self.exp)
         else:
             print(ab_or_at[i],"максимален")
-
-    def choise_tp(self,abil_or_atrib,numb):
-        print(abil_or_atrib[numb])
+            
 
     def make_table(self):
         for j in range(2):

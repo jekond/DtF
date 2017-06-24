@@ -5,7 +5,7 @@ def prov(point,slogn,penalty):#кол-во кубиков и сложность.
     a=0#значение кубика
     if(penalty>=point):
         print("Штраф ревосходит кол-во кубиков")
-        return '-'
+        return '0'
     for i in range(point-penalty):
         a=randint(1,10)
         if(a>=slogn):

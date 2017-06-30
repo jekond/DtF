@@ -1,9 +1,9 @@
 from random import *
-def prov(point,slogn,penalty):#кол-во кубиков и сложность. Сделать необязательный аргумент Штраф.
+def prov(point,slogn,penalty):#кол-во кубиков и сложность. Сделать необязательный аргумент Штраф.'
     success=0#набранные успехи
     fail=0#набранные провалы
     a=0#значение кубика
-    if(penalty>=point):
+    if(penalty == '!' or penalty>=point):
         print("Штраф ревосходит кол-во кубиков")
         return '0'
     for i in range(point-penalty):

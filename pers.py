@@ -1,5 +1,7 @@
 from cub import *
 from weapon import *
+import random
+
 class Characher:
     def __init__(self,name,race):
         self.name = name
@@ -16,6 +18,7 @@ class Characher:
         self.willpower = [5,5]#Сила воли. На данный момент и максимальная
         self.faith = [5,5]#Вера. На данный момент и максимальная
         self.throe = 4#Мука
+        self.status = 1#1 - живой. 0 - мертв
 ###
 ###Прочие действия
 ###
@@ -26,6 +29,13 @@ class Characher:
     def start_fight(self,enemy):
         self.enemy = enemy
         self.enemy.enemy = self
+
+#
+#Функция определения инициативы в бою
+#
+    def initiative(self):
+        initiative = random.randint(1,10) + self.atribut['Physical']['Dexterity'] + self.atribut['Mental']['Wits']
+        return initiative
 
 #
 #Функция проникновения. Использовать при зломе замков, обходе всяких камер и лазерных защит
@@ -158,10 +168,12 @@ class Characher:
                 print(self.health[a],'!!!')
             if(self.health[1] + self.health[2] == 8):
                 print('Персонаж умер',self.health)
+                self.status = 0
                 break
             elif(d_type=='lethal' and self.health[0]+self.health[1]+self.health[2]==8 or
                  d_type=='aggravating' and self.health[0]+self.health[1]+self.health[2]==8):
                 print('Персонаж умер',self.health)
+                self.status = 0
                 break
         self.check_hp()
 #

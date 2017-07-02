@@ -1,4 +1,5 @@
 from pers import *
+import pygame
 class Button:
     def __init__(self,x,y,w,h,b_id):
         self.x = x
@@ -6,6 +7,18 @@ class Button:
         self.w = w
         self.h = h
         self.b_id = b_id
+
+    def draw_rect(self,screen,black):
+        pygame.draw.rect(screen,black,[self.x,self.y,self.w,self.h],0)
+
+    def click_on_button(self,pos):
+        if(pos[0]>self.x and pos[0]<self.x+self.w and pos[1]>self.y and pos[1]<self.y+self.h):
+            return self.b_id
+        else:
+            return 0
+
+start_game_button = Button(250,250,50,250,'start')
+start_dialog_button = Button(800,250,50,250,'dialog')
 
 class Charsheet_button(Button):
     def __init__(self):
@@ -54,3 +67,10 @@ class Charsheet_button(Button):
         
 test = Charsheet_button()
 test.make_table()
+
+'''
+class Main_window_button(Button):
+    def __init__(self,x,y,w,h,b_id):
+        Button.__init__(x,y,w,h,b_id)
+'''
+    

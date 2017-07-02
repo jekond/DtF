@@ -1,5 +1,9 @@
 import pygame
 import dialog
+import new_game
+import button_class
+import pers
+
 pygame.init()
 
 # Define some colors
@@ -24,7 +28,13 @@ while main_done==False:
         if event.type == pygame.MOUSEBUTTONDOWN:
             print (pygame.mouse.get_pos())
             pos = pygame.mouse.get_pos()
-            dialog.show_time(black,white,screen)
+            start = button_class.start_game_button.click_on_button(pos)
+            dialog_ch = button_class.start_dialog_button.click_on_button(pos)
+            if(start=='start'):
+                new_game.show_time(white,screen)
+            elif(dialog_ch!=0):
+                dialog.show_time(black,white,screen)
+                #new_game.show_time(white,screen)
     # Flag that we are done so we exit this loop
 
     # ОБРАБОТКА ВСЕХ СОБЫТИЙ ДОЛЖНА НАХОДИТЬСЯ НАД ЭТИМ КОММЕНТАРИЕМ
@@ -38,7 +48,8 @@ while main_done==False:
      
     # ВЕСЬ КОД ДЛЯ РИСОВАНИЯ ДОЛЖЕН НАХОДИТЬСЯ ПОД ЭТИМ КОММЕНТАРИЕМ
     screen.fill(white)
-            
+    button_class.start_game_button.draw_rect(screen,black)
+    button_class.start_dialog_button.draw_rect(screen,black)
     pygame.display.flip()
     # ВЕСЬ КОД ДЛЯ РИСОВАНИЯ ДОЛЖЕН НАХОДИТЬСЯ НАД ЭТИМ КОММЕНТАРИЕМ
 

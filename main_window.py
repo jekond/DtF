@@ -12,7 +12,7 @@ white    = ( 255, 255, 255)
 green    = (   0, 255,   0)
 red      = ( 255,   0,   0)
 
-size=[1240,720]
+size=[1300,680]
 
 screen=pygame.display.set_mode(size)
 
